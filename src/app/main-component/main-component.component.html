@@ -1,4 +1,12 @@
 <button mat-flat-button (click)="onLoginPage()">  SignIn    </button>
+
+<div *ngIf="loginPage">
+    <app-login (emitLoginResult)="isLoginFailue($event)"></app-login>
+</div>
+
+<p style="color:red">{{loginStatus}}</p>
+
+
 <!--
 <button mat-flat-button (click)="onRegistrationPage()"> SignUp </button>
 
@@ -18,15 +26,5 @@
 
 <button routerLink="/login">Login</button>
 <button routerLink="/registration">Registration</button>
+
 -->
-<div *ngIf="loginPage">
-    <app-login (emitLoginResult)="isLoginFailue($event)"></app-login>
-</div>
-
-<p style="color:red">{{loginStatus}}</p>
-
-
-<div *ngIf="!loginPage">
-    <app-registration (emitRegistrationResult)="isRegistrationSuccess($event)">  </app-registration>
-</div>
-{{registrationStatus}}
