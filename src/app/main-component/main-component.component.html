@@ -1,0 +1,32 @@
+<button mat-flat-button (click)="onLoginPage()">  SignIn    </button>
+<!--
+<button mat-flat-button (click)="onRegistrationPage()"> SignUp </button>
+
+<button mat-flat-button (click)="onRegistrationPage()"> SignUp </button>
+<button mat-stroked-button (click)="onLoginPage()">  Login    </button>
+
+<button mat-icon-button (click)="onLoginPage()">  Login    </button>
+<button mat-fab (click)="onLoginPage()">  Login    </button>
+<button mat-mini-fab (click)="onLoginPage()">  Login    </button>
+
+<button  class="my-custom-button" mat-flat-button (click)="onLoginPage()">  Login    </button>
+<button color="accent" mat-raised-button (click)="onLoginPage()">  Login    </button>
+<button color="warn" mat-raised-button (click)="onLoginPage()">  Login    </button>
+
+
+
+
+<button routerLink="/login">Login</button>
+<button routerLink="/registration">Registration</button>
+-->
+<div *ngIf="loginPage">
+    <app-login (emitLoginResult)="isLoginFailue($event)"></app-login>
+</div>
+
+<p style="color:red">{{loginStatus}}</p>
+
+
+<div *ngIf="!loginPage">
+    <app-registration (emitRegistrationResult)="isRegistrationSuccess($event)">  </app-registration>
+</div>
+{{registrationStatus}}

@@ -1,0 +1,98 @@
+
+<p>registration works!</p>
+{{registrationInput | json}} 
+
+<div class="register-form">
+    <form #userForm="ngForm" (ngSubmit)="onRegisterSubmit(userForm)" novalidate>
+        <mat-form-field class="example-full-width">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput name="name" [ngModel]="registrationInput.name" required>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput name="emailId" [ngModel]="registrationInput.emailId" placeholder="Email Id" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input [type]="hide ? 'password' : 'text'" matInput name="password" [ngModel]="registrationInput.password" placeholder="Enter a Password" autocomplete="off" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Confirm Password</mat-label> 
+            <input [type]="hide ? 'password' : 'text'" matInput name="Confirm password"  placeholder="Enter a Password" autocomplete="off" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width">
+            <mat-label>Phone Number</mat-label>
+            <input type="text" matInput name="phoneNumbers" [ngModel]="registrationInput.phoneNumbers" placeholder="Phone Number" required>
+        </mat-form-field>
+         
+        Age
+
+        <mat-slider name="age" class="min" (input)="pitch($event)"
+            thumbLabel
+            [displayWith]="formatLabel"
+            tickInterval="1"
+            min="1"
+            max="100" ></mat-slider>
+
+    <mat-form-field appearance="fill"  name="gender" class="marginRight">
+        <mat-label>Gender</mat-label>
+        <mat-select  [(value)]="registrationInput.gender" required>
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">female</mat-option>
+        </mat-select>
+    </mat-form-field>
+ 
+    <mat-form-field>
+        <mat-label>Street</mat-label>
+        <input type="text" matInput name="street" [ngModel]="registrationInput.street" required>
+    </mat-form-field>
+
+    <mat-form-field  class="marginRight">
+        <mat-label>Area</mat-label>
+        <input type="text" matInput name="area" [ngModel]="registrationInput.area" required>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>City</mat-label>
+        <input type="text" matInput name="city" [(ngModel)]="registrationInput.city" required>
+    </mat-form-field>
+
+    <mat-form-field >
+        <mat-label>City</mat-label>
+        <input type="text" matInput name="state" [(ngModel)]="registrationInput.state" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-chip-list">
+        <mat-chip-list #chipList aria-label="medicalHistory">
+          <mat-chip *ngFor="let disease of medHis" [selectable]="selectable"
+                   [removable]="removable" (removed)="remove(disease)">
+            {{disease.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="Medical History..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      <input type="text"  name="age" [ngModel]="registrationInput.age" placeholder="Phone " required>
+      <input type="text"  name="gender" [ngModel]="registrationInput.gender" placeholder="Phone s" required>
+      <input type="text"  name="medicalHistory" [ngModel]="registrationInput.medicalHistory" placeholder="Phone M" required>
+ 
+        <br>
+        <button type="submit"  class="my-custom-button" mat-flat-button >  Register    </button>
+
+    
+    </form> 
+</div>

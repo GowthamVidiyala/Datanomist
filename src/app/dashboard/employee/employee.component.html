@@ -1,0 +1,13 @@
+
+{{employee | json}}
+
+<form #employeeForm="ngForm" (ngSubmit)="onCreateEmployee(employeeForm)">
+Name: <input name="name"  #name="ngModel" [(ngModel)]="employee.name">
+<br>
+Age: <input name="age"  #age="ngModel" [(ngModel)]="employee.age">
+<br>
+Salary: <input name="salary"  #salary="ngModel" [(ngModel)]="employee.salary">
+<br>
+<button type="submit">SUBMIT </button>
+
+</form>
